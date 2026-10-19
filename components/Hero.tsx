@@ -87,7 +87,7 @@ export default function Hero() {
               href="/about"
               className="inline-flex items-center gap-1.5 border border-hairline px-6 py-3 text-sm text-paper transition-colors duration-200 hover:border-signalink hover:text-signalink"
             >
-              Why Product Management?
+              My Approach to Product ↗
             </Link>
           </motion.div>
         </div>

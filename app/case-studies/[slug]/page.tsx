@@ -1,12 +1,14 @@
+
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, FileText } from "lucide-react";
 import { caseStudies, getCaseStudy } from "@/lib/case-studies";
 
 const imageBySlug: Record<string, string> = {
+  "indeed-fitcheck-assistant": "/case-studies/indeed-fitcheck.png",
   "apollo-medicine-companion": "/case-studies/apollo-medicine.png",
   "google-maps-refueling": "/case-studies/google-maps-refueling.png",
   travelsouls: "/case-studies/travelsouls.png",
@@ -15,6 +17,7 @@ const imageBySlug: Record<string, string> = {
 };
 
 const logoBySlug: Record<string, string> = {
+  "indeed-fitcheck-assistant": "/case-studies/indeed-fitcheck-logo.png",
   "apollo-medicine-companion": "/case-studies/apollo-logo.png",
   "google-maps-refueling": "/case-studies/google-maps-logo.png",
   travelsouls: "/case-studies/travelsouls-logo.png",
@@ -137,21 +140,38 @@ export default function CaseStudyDetail({
               {study.description}
             </p>
 
-            {study.prototypeUrl ? (
-              <a
-                href={study.prototypeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-flex items-center gap-2 bg-signal px-6 py-3 text-sm font-medium text-onsignal transition-opacity hover:opacity-90"
-              >
-                View prototype
-                <ArrowUpRight size={15} />
-              </a>
-            ) : (
-              <span className="mt-8 inline-flex border border-hairline px-6 py-3 text-sm text-muted">
-                Prototype in progress
-              </span>
-            )}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {study.prototypeUrl && (
+                <a
+                  href={study.prototypeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-signal px-5 py-3 text-sm font-medium text-onsignal transition-opacity hover:opacity-90"
+                >
+                  View Prototype
+                  <ArrowUpRight size={15} />
+                </a>
+              )}
+
+              {study.presentationUrl && (
+                <a
+                  href={study.presentationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-hairline px-5 py-3 text-sm font-medium text-paper transition-colors hover:border-signalink hover:text-signalink"
+                >
+                  Read Full Case Study
+                  <FileText size={15} />
+                  <ArrowUpRight size={15} />
+                </a>
+              )}
+
+              {!study.prototypeUrl && (
+                <span className="inline-flex items-center border border-hairline px-5 py-3 text-sm text-muted">
+                  Prototype in progress
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="flex items-center justify-center overflow-hidden border border-hairline bg-surface p-3">
@@ -183,7 +203,6 @@ export default function CaseStudyDetail({
                   <p className="text-xs uppercase tracking-[0.18em] text-muted">
                     Primary users
                   </p>
-
                   <p className="mt-3 leading-relaxed text-paper">
                     {study.primaryUsers}
                   </p>
@@ -195,7 +214,6 @@ export default function CaseStudyDetail({
                   <p className="text-xs uppercase tracking-[0.18em] text-muted">
                     Secondary users
                   </p>
-
                   <p className="mt-3 leading-relaxed text-paper">
                     {study.secondaryUsers}
                   </p>
@@ -214,13 +232,13 @@ export default function CaseStudyDetail({
         )}
 
         {study.research && study.research.length > 0 && (
-          <Section title="Research & insight">
+          <Section title="Research & Insight">
             <BulletList items={study.research} />
           </Section>
         )}
 
         {study.journey && study.journey.length > 0 && (
-          <Section title="User journey">
+          <Section title="User Journey">
             <ol className="space-y-6">
               {study.journey.map((step, index) => (
                 <li key={step.stage} className="flex gap-5">
@@ -230,7 +248,6 @@ export default function CaseStudyDetail({
 
                   <div className="max-w-prose">
                     <h3 className="text-paper">{step.stage}</h3>
-
                     <p className="mt-2 leading-relaxed text-muted">
                       {step.detail}
                     </p>
@@ -254,19 +271,19 @@ export default function CaseStudyDetail({
         )}
 
         {study.highlights && study.highlights.length > 0 && (
-          <Section title="What it includes">
+          <Section title="Key Highlights">
             <BulletList items={study.highlights} />
           </Section>
         )}
 
         {study.mvp && study.mvp.length > 0 && (
-          <Section title="MVP">
+          <Section title="MVP Scope">
             <BulletList items={study.mvp} />
           </Section>
         )}
 
         {study.metrics && study.metrics.length > 0 && (
-          <Section title="Metrics">
+          <Section title="Success Metrics">
             <div className="space-y-4">
               {study.metrics.map((metric) => (
                 <div
@@ -275,8 +292,8 @@ export default function CaseStudyDetail({
                 >
                   <span className="inline-flex border border-hairline px-2 py-1 text-xs text-muted">
                     {metric.type === "north star"
-                      ? "North star"
-                      : "Supporting"}
+                      ? "North Star"
+                      : "Supporting Metric"}
                   </span>
 
                   <p className="mt-3 max-w-prose leading-relaxed text-paper">
@@ -289,13 +306,13 @@ export default function CaseStudyDetail({
         )}
 
         {study.rollout && study.rollout.length > 0 && (
-          <Section title="Rollout">
+          <Section title="Rollout Plan">
             <BulletList items={study.rollout} />
           </Section>
         )}
 
         {study.risks && study.risks.length > 0 && (
-          <Section title="Risks & open questions">
+          <Section title="Risks & Open Questions">
             <BulletList items={study.risks} />
           </Section>
         )}
@@ -315,7 +332,7 @@ export default function CaseStudyDetail({
           className="inline-flex items-center gap-2 text-sm text-paper transition-colors hover:text-signalink"
         >
           <ArrowLeft size={14} />
-          Back to all case studies
+          Back to All Case Studies
         </Link>
       </div>
     </main>

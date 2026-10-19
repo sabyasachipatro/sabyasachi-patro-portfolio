@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import { skillGroups } from "@/lib/site-config";
@@ -5,44 +6,84 @@ import { skillGroups } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Skills — Sabyasachi Patro",
   description:
-    "Product management, AI prototyping, workflow problem-solving, and creative production experience.",
+    "Product management, AI product prototyping, LLM integration, and user-centered problem-solving.",
 };
 
 const groupDescriptions: Record<string, string> = {
   "Product Management":
     "Core product skills developed through product case studies, structured problem-solving, and hands-on portfolio work.",
   "AI & Prototyping":
-    "Tools and approaches used to explore AI-powered product experiences and turn product ideas into working prototypes.",
+    "Experience building AI-powered product prototypes, integrating LLM APIs, and evaluating AI responses for relevance, evidence, and reliability.",
   "Creative & Technical":
-    "Transferable experience from creative production, including workflow understanding, quality, collaboration, and technical execution.",
+    "Transferable experience in workflow understanding, quality, collaboration, and technical execution.",
   "Creative Production":
-    "Transferable experience from creative production, including workflow understanding, quality, collaboration, and technical execution.",
+    "Transferable experience in workflow understanding, quality, collaboration, and technical execution.",
+};
+
+const additionalSkills: Record<string, string[]> = {
+  "AI & technology": [
+    "LLM & API integration",
+    "AI response evaluation",
+    "AI guardrails & reliability",
+  ],
+  "AI & Prototyping": [
+    "LLM & API integration",
+    "AI response evaluation",
+    "AI guardrails & reliability",
+  ],
 };
 
 export default function SkillsPage() {
-  const orderedGroups = [...skillGroups].sort((a, b) => {
-    const order = [
-      "Product Management",
-      "AI & Prototyping",
-      "Creative & Technical",
-      "Creative Production",
-    ];
+  const groupOrder = [
+    "Product Management",
+    "AI & technology",
+    "AI & Prototyping",
+    "Tools",
+    "Creative & Technical",
+    "Creative Production",
+  ];
 
-    return order.indexOf(a.title) - order.indexOf(b.title);
-  });
+  const orderedGroups = [...skillGroups]
+    .map((group) => {
+      const extraSkills = additionalSkills[group.title] ?? [];
+
+      return {
+        ...group,
+        skills: [
+          ...group.skills,
+          ...extraSkills.filter(
+            (skill) =>
+              !group.skills.some(
+                (existing) =>
+                  existing.toLowerCase() === skill.toLowerCase()
+              )
+          ),
+        ],
+      };
+    })
+    .sort((a, b) => {
+      const aIndex = groupOrder.indexOf(a.title);
+      const bIndex = groupOrder.indexOf(b.title);
+
+      return (
+        (aIndex === -1 ? groupOrder.length : aIndex) -
+        (bIndex === -1 ? groupOrder.length : bIndex)
+      );
+    });
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
       <SectionHeading
         title="Capabilities"
-        subtitle="A combination of product thinking, AI prototyping, workflow problem-solving, and creative production experience."
+        subtitle="Product thinking, AI-powered prototyping, technical problem-solving, and user-centered product development."
       />
 
       <div className="mt-14 grid gap-px overflow-hidden bg-hairline md:grid-cols-2">
         {orderedGroups.map((group, index) => {
           const isPrimary =
             group.title === "Product Management" ||
-            group.title === "AI & Prototyping";
+            group.title === "AI & Prototyping" ||
+            group.title === "AI & technology";
 
           return (
             <section
@@ -95,9 +136,9 @@ export default function SkillsPage() {
 
       <div className="mt-12 border-l border-signalink pl-6">
         <p className="max-w-3xl text-sm leading-relaxed text-muted">
-          I’m focused on developing practical product management skills through
-    structured problem-solving, product case studies, AI-powered prototypes,
-    and a user-centered approach to building useful products.
+          I’m developing practical product management capabilities through
+          structured problem-solving, product case studies, AI-powered
+          prototypes, and a user-centered approach to building useful products.
         </p>
       </div>
     </main>

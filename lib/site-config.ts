@@ -10,7 +10,7 @@ export const siteConfig = {
   email: "sabyasachipatro17@gmail.com",
   phone: "7008334376",
   linkedin: "https://www.linkedin.com/in/sabyasachi-patro-a21283144/",
-  github: "https://github.com/sabyasachipatro07-jpg",
+  github: "https://github.com/sabyasachipatro",
   location: "India",
 };
 

@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -5,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Contact — Sabyasachi Patro",
   description:
-    "Contact Sabyasachi Patro for Associate Product Manager opportunities, product collaborations, and AI-powered product discussions.",
+    "Contact Sabyasachi Patro for Associate Product Manager opportunities, Product Management internships, product collaborations, and AI-powered product discussions.",
 };
 
 export default function ContactPage() {
@@ -23,8 +24,8 @@ export default function ContactPage() {
 
           <p className="mt-6 max-w-prose text-lg leading-relaxed text-muted">
             I&apos;m open to Associate Product Manager opportunities,
-            product collaborations, and conversations around AI-powered
-            products.
+            Product Management internships, product collaborations, and
+            conversations around AI-powered products.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -97,8 +98,9 @@ export default function ContactPage() {
               </p>
 
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                Open to entry-level product opportunities, collaborative
-                projects, and conversations with product teams.
+                Open to Associate Product Manager opportunities,
+                Product Management internships, and collaborative projects
+                focused on solving real user problems.
               </p>
             </div>
           </div>

@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -7,7 +8,7 @@ import SectionHeading from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Sabyasachi Patro — Aspiring Associate Product Manager",
   description:
-    "Product portfolio of Sabyasachi Patro, featuring product case studies, AI-powered prototypes, and practical product thinking.",
+    "Product portfolio of Sabyasachi Patro, featuring product case studies, AI-powered prototypes, and user-centered product thinking.",
 };
 
 export default function Home() {
@@ -26,39 +27,40 @@ export default function Home() {
 
             <div className="max-w-prose space-y-6 text-lg leading-relaxed">
               <p className="text-paper">
-                I’m an aspiring Associate Product Manager focused on building
-                useful products that solve real user problems. I enjoy
-                understanding user needs, breaking down complex challenges, and
-                turning ideas into practical product experiences.
+                I&apos;m an aspiring Associate Product Manager interested in
+                understanding user needs, identifying opportunities, and
+                building products that make everyday experiences simpler and
+                more useful.
               </p>
 
               <p className="text-muted">
-                Through product case studies and AI-powered prototypes, I’m
-                developing my skills in product discovery, prioritization, MVP
-                definition, and product metrics. I’m looking forward to
-                contributing to meaningful products while learning from
-                experienced product teams.
+                Through product case studies and working prototypes, I&apos;m
+                applying my learning in product discovery, feature
+                prioritization, MVP definition, and AI-powered product
+                development.
               </p>
             </div>
 
             <Link
               href="/about"
-              className="mt-6 inline-flex items-center gap-1.5 text-sm text-paper hover:text-signalink"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm text-paper transition-colors hover:text-signalink"
             >
-              Read more about me
+              About Me
               <ArrowUpRight size={14} />
             </Link>
           </div>
 
           <div className="border-l border-hairline pl-8">
-            <p className="mb-4 text-sm text-muted">What I’m focused on</p>
+            <p className="mb-4 text-sm text-muted">
+              What I&apos;m focused on
+            </p>
 
             <ul className="space-y-3 text-paper">
               {[
-                "Product discovery and problem definition",
+                "Problem discovery and user needs",
                 "User journeys and pain-point analysis",
-                "Feature prioritization and MVP thinking",
-                "AI-powered product prototypes",
+                "Feature prioritization and MVP definition",
+                "AI-powered product prototyping",
               ].map((item) => (
                 <li
                   key={item}

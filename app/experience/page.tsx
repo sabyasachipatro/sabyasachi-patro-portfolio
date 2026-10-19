@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import { experience } from "@/lib/site-config";
@@ -5,12 +6,12 @@ import { experience } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Experience — Sabyasachi Patro",
   description:
-    "Professional experience, transferable skills, and creative-production background supporting a transition into product management.",
+    "Professional experience across VFX, animation, and creative production, alongside ongoing development in product management and AI-powered products.",
 };
 
 export default function ExperiencePage() {
   return (
-    <div className="mx-auto max-w-4xl px-6 py-20 md:px-10 md:py-28">
+    <main className="mx-auto max-w-4xl px-6 py-20 md:px-10 md:py-28">
       <div className="max-w-3xl">
         <p className="text-xs font-medium uppercase tracking-[0.24em] text-signal">
           Professional Background
@@ -21,11 +22,11 @@ export default function ExperiencePage() {
         </h1>
 
         <p className="mt-6 text-lg leading-relaxed text-muted">
-          My professional experience has developed my ability to understand
-          complex workflows, solve problems under constraints, collaborate
-          across teams, and deliver high-quality outcomes. I’m now applying
-          these strengths to product discovery, user problems, and
-          AI-powered product development.
+          My background spans VFX and creative production across animation
+          and film projects. Working in production environments has given me
+          experience navigating complex workflows, collaborating across
+          disciplines, solving technical problems, and delivering quality
+          outcomes within demanding constraints.
         </p>
       </div>
 
@@ -81,11 +82,10 @@ export default function ExperiencePage() {
 
       <div className="mt-10 border-l border-signal pl-6">
         <p className="text-muted">
-          I’m building on this foundation as I transition into Product
-          Management, with a focus on understanding user needs, improving
-          workflows, prioritizing solutions, and creating useful products.
+          I&apos;m building on this experience through product case studies,
+          AI-powered prototypes, and hands-on learning in Product Management.
         </p>
       </div>
-    </div>
+    </main>
   );
 }
